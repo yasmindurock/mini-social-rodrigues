@@ -11,6 +11,8 @@ function curtir() {
    curtido = false;
   document.getElementById("likeCount").innerText = likeCount;
  }
+
+ 
 }
 
 document.getElementById("likeBtn").addEventListener("click", curtir);
