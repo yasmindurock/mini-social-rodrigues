@@ -12,6 +12,7 @@ function curtir() {
   document.getElementById("likeCount").innerText = likeCount;
  }
 
+
  
 }
 
