@@ -11,9 +11,22 @@ function curtir() {
    curtido = false;
   document.getElementById("likeCount").innerText = likeCount;
  }
-
-
  
 }
 
 document.getElementById("likeBtn").addEventListener("click", curtir);
+
+function descurtir() {
+ if(descurtido == false) {
+   deslikeCount++;
+   curtido = true;
+  document.getElementById("deslikeCount").innerText = deslikeCount;
+ }else{
+   deslikeCount--;
+   descurtido = false;
+  document.getElementById("deslikeCount").innerText = deslikeCount;
+ }
+ 
+}
+
+document.getElementById("deslikeBtn").addEventListener("click", descurtir);
