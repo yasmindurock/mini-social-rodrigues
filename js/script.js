@@ -19,7 +19,7 @@ document.getElementById("likeBtn").addEventListener("click", curtir);
 function descurtir() {
  if(descurtido == false) {
    deslikeCount++;
-   curtido = true;
+   descurtido = true;
   document.getElementById("deslikeCount").innerText = deslikeCount;
  }else{
    deslikeCount--;
