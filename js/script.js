@@ -1,32 +1,61 @@
+// === ESTADO (dados da aplicação) === 
 let likeCount = 0;
+let dislikeCount = 0;
 let curtido = false;
-
-let deslikeCount = 0;
 let descurtido = false;
 
+// === SERVICE (regras de negócio)
 function curtir() {
-  if (!curtido) {
+  if (curtido == false){
     likeCount++;
     curtido = true;
-  } else {
+    
+
+    if(descurtido == true){
+      dislikeCount--;
+      descurtido = false;
+    }
+
+  }else{
     likeCount--;
     curtido = false;
   }
 
-  document.getElementById("likeCount").innerText = likeCount;
 }
 
 function descurtir() {
-  if (!descurtido) {
-    deslikeCount++;
+  if(descurtido == false){
+    dislikeCount++;
     descurtido = true;
-  } else {
-    deslikeCount--;
+    
+
+    if(curtido == true){
+      likeCount--;
+      curtido = false;
+    }
+
+  }
+  else{
+    dislikeCount--;
     descurtido = false;
   }
-
-  document.getElementById("deslikeCount").innerText = deslikeCount;
 }
 
-document.getElementById("likeBtn").addEventListener("click", curtir);
-document.getElementById("deslikeBtn").addEventListener("click", descurtir);
+
+//=== CONTROLLER (intermediação evento/regras de negócio)
+
+function clicarCurtir(){
+  curtir();
+  atualizarTela();
+}
+function clicarDescurtir(){
+  descurtir();
+  atualizarTela();
+}
+
+
+// === EVENTOS ====
+document.getElementById("likeBtn").addEventListener("click", clicarCurtir);
+document.getElementById("dislikeBtn").addEventListener("click", clicarDescurtir);
+
+
