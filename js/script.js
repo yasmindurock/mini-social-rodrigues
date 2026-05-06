@@ -1,15 +1,16 @@
-// === ESTADO (dados da aplicação) === 
+//=== ESTADO (dados da aplicação) === 
+
 let likeCount = 0;
 let dislikeCount = 0;
 let curtido = false;
 let descurtido = false;
 
-// === SERVICE (regras de negócio)
+//=== SERVICE (regras de negócio) === 
+
 function curtir() {
   if (curtido == false){
     likeCount++;
     curtido = true;
-    
 
     if(descurtido == true){
       dislikeCount--;
@@ -27,7 +28,6 @@ function descurtir() {
   if(descurtido == false){
     dislikeCount++;
     descurtido = true;
-    
 
     if(curtido == true){
       likeCount--;
@@ -41,8 +41,13 @@ function descurtir() {
   }
 }
 
+// === VIEW (interface/rendenização) ===
+function atualizarTela(){
+   document.getElementById("likeCount").innerText = likeCount;
+   document.getElementById("dislikeCount").innerText = dislikeCount;
+}
 
-//=== CONTROLLER (intermediação evento/regras de negócio)
+//=== CONTROLLER (intermediação)===
 
 function clicarCurtir(){
   curtir();
@@ -53,9 +58,11 @@ function clicarDescurtir(){
   atualizarTela();
 }
 
+// === EVENTOS ===
 
-// === EVENTOS ====
 document.getElementById("likeBtn").addEventListener("click", clicarCurtir);
 document.getElementById("dislikeBtn").addEventListener("click", clicarDescurtir);
 
+// === INICIALIZAÇÃO ===
 
+atualizarTela();
